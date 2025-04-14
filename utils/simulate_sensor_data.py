@@ -41,7 +41,7 @@ def simulate_data(start_date: str, end_date: str, freq: str = 'H') -> pd.DataFra
 def main():
     # Define the simulation period
     start_date = "2025-03-01"
-    end_date = "2025-04-10"
+    end_date = "2025-04-14"
     
     # Simulate the data
     df = simulate_data(start_date, end_date, freq='H')
