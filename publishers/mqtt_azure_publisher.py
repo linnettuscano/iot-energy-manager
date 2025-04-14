@@ -1,7 +1,9 @@
+# publishers/mqtt_azure_publisher.py
 import os
 import ssl
 import time
 import json
+import datetime
 from dotenv import load_dotenv
 from sensors.smart_plug import read_smart_plug
 from sensors.temperature_sensor import read_temperature_humidity
@@ -10,17 +12,15 @@ from utils.mqtt_client import MQTTClient
 from utils.sas_token import get_sas_token
 from utils.logger import setup_logger
 
-# Load environment variables
 load_dotenv()
 logger = setup_logger("AzurePublisher")
 
-# Read Azure configuration from env
 AZURE_IOTHUB_HOSTNAME = os.getenv("AZURE_IOTHUB_HOSTNAME")
 AZURE_DEVICE_ID = os.getenv("AZURE_DEVICE_ID")
 AZURE_PRIMARY_KEY = os.getenv("AZURE_PRIMARY_KEY")
 AZURE_MQTT_PORT = int(os.getenv("AZURE_MQTT_PORT", 8883))
 
-# Generate SAS token using the utility. The SAS token is valid for the specified period (e.g., 3600 seconds)
+# Generate SAS token using the utility
 sas_token = get_sas_token(AZURE_IOTHUB_HOSTNAME, AZURE_DEVICE_ID, AZURE_PRIMARY_KEY, validity_period=3600)
 
 # Construct the MQTT username and topic for Azure IoT Hub
@@ -38,7 +38,7 @@ def run():
         username=AZURE_USERNAME,
         password=sas_token
     )
-    # For secure connection with TLS, uncomment the following line and configure as needed:
+    # For secure connection with TLS
     client.client.tls_set(
         cert_reqs=ssl.CERT_REQUIRED,
         tls_version=ssl.PROTOCOL_TLSv1_2
@@ -53,11 +53,14 @@ def run():
             occupancy = read_occupancy()
 
             # Create payload as JSON
+            timestamp = datetime.datetime.utcnow().isoformat() + "Z"
+            
             payload = {
                 "smart_plug": smart_plug_value,
                 "temperature": temp_humidity["temperature"],
                 "humidity": temp_humidity["humidity"],
-                "occupancy": occupancy
+                "occupancy": occupancy,
+                "timestamp": timestamp
             }
             payload_str = json.dumps(payload)
             logger.info("Publishing to Azure IoT Hub: %s", payload_str)
