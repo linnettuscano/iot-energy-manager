@@ -1,0 +1,4 @@
+ARIMA MSE: 153.43, ARIMA MAE: 10.47
+LSTM MSE: 150.08, LSTM MAE: 10.33
+Better Model: LSTM
+Explanation: LSTM performed better with lower MSE and MAE, indicating that it captured complex non-linear patterns and longer-term dependencies in the sensor data more successfully than ARIMA.
