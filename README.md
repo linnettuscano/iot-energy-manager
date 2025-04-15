@@ -129,6 +129,7 @@ python analytics/forecast_arima.py --steps 15 --look_back 24 --epochs 50 --batch
 
 ### Phase 4: Integration & Energy Demand Optimization
 - Decisions are pushed to Azure and stored as CSV via ASA.
+- Utilized by external dashboards or control interfaces.
 
 ---
 
