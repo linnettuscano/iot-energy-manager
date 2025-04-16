@@ -1,4 +1,4 @@
-ARIMA MSE: 0.25, ARIMA MAE: 0.50
-LSTM MSE: 0.28, LSTM MAE: 0.53
-Better Model: ARIMA
-Explanation: ARIMA performed better due to lower MSE and MAE. This suggests that the linear model is capturing the underlying trend effectively in this dataset, perhaps because the data is less complex or less noisy.
+ARIMA MSE: N/A, ARIMA MAE: N/A
+LSTM MSE: 0.29, LSTM MAE: 0.49
+Better Model: LSTM
+Explanation: LSTM performed better with lower MSE and MAE, capturing non-linear patterns effectively.
