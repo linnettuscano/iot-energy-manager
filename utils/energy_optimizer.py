@@ -12,7 +12,7 @@ load_dotenv()
 # Get the connection string from the environment variable, or define it directly here.
 IOTHUB_DEVICE_CONNECTION_STRING = os.getenv("IOTHUB_DEVICE_CONNECTION_STRING", "Your_IoT_Hub_Device_Connection_String")
 
-# File path to pre-computed energy distribution results (if available)
+# File path to pre-computed energy distribution results (if they are available)
 CSV_FILE_PATH = os.path.join("data", "energy_distribution_results.csv")
 
 def simulate_energy_distribution(threshold=250):
