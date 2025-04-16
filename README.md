@@ -1,6 +1,6 @@
 # IoT Energy Management System For Residential Buildings
 
-An end-to-end solution for simulating IoT energy sensors, securely publishing sensor data to Azure IoT Hub, storing and analyzing historical data, and applying predictive models to optimize energy usage in residential buildings. This system demonstrates how to integrate ARIMA and LSTM forecasting models with smart energy controls and how to route decision data into Azure Blob Storage as CSV files.
+An end-to-end solution for simulating IoT energy sensors, securely publishing sensor data to Azure IoT Hub, storing and analyzing historical data, and applying predictive models to optimize energy usage in residential buildings. This system demonstrates how to integrate ARIMA and LSTM forecasting models with smart energy controls and how to route decision data into Azure Blob Storage as CSV files
 
 ## Table of Contents
 1. [Overview](#overview)
